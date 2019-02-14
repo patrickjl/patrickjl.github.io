@@ -5,124 +5,118 @@
  </head>
   
   <body>
+    <!-- Background Image -->
+ <body style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/ISS-40_Thunderheads_near_Borneo.jpg/1280px-ISS-40_Thunderheads_near_Borneo.jpg');" style="width:auto;">
     <br>
-    <p>Enter your values separated by a blank space.</p>
-<input type="text" id="numberSeries" size="40" style="height:60px;" align="right"/>
+   
+    <p style="color:white;font-size:120%">Enter your values separated by a blank space.</p>
+   <p style="color:white;">Once all the values have been entered, press the Calculate button to get the data below.</p>
+   
+   <!-- Input Box -->
+<input type="text" id="numberSeries" size="40" style="height:60px; border:1px solid white;" align="center"/>
 
     <br>
-    <button id="calculate" onclick="calculate();">Calculate</button>
+   
+   <!--Calculate Button -->
+    <button id="calculate" style="opacity:0.7;background-color:blue;color:white;margin-top:10px;padding:6px;border-radius:6px;border: 1px solid white;" onclick="calculate();">&nbspCalculate&nbsp</button>
+   
+   <!--Reset Button -->
+   <button id="reset" style="opacity:0.7;background-color:blue;color:white;margin-top:10px;padding:6px;border-radius:6px;border: 1px solid white;" onclick="reset();">&nbspReset&nbsp</button>
+<script type="text/javascript">
+    document.getElementById('reset').onclick= function() {
+        var field= document.getElementById('numberSeries');
+        numberSeries.value= numberSeries.defaultValue;
+    };
+</script>
+
+   
     <p></p>
 
+   <!--Table Structure and Style -->
     <style> 
       table, th, td {
-        border: 1px solid black;
+        border: 1px solid white;        
         border-collapse: collapse;
+        width:80%;
+        margin:auto;
+        font-size:30px
+        table-layout:fixed;
+        background:darkblue;
+        opacity:0.65;
+        color:white;
+        padding:5px;
+        margin-top:10px;
+        
       }
-      td, td{
+      th, td{
         padding: 5px;
+        opacity:0.95;
       }
       th {
-        text-align: left;
+        text-align: center;
+        opacity:0.95;
       }
       
       }
     </style>
-<table style="width: 100%">
   <table align="center">
 <tr>
-  <th>Statistic</th>
-  <th></th>
-  <th>Sample </th>
-  <th></th>
-  <th>Population </th>
-  </tr>
-<tr>
-  <td> Size: </td>
-  <td>n</td>
+  <th style="width:28%">Statistics</th>
+  <th style="width:8%">&nbsp&nbsp</th>
+  <th style="width:28%">Sample</th>
+  <th style="width:8%">&nbsp&nbsp&nbsp&nbsp&nbsp</th>
+  <th style="width:28%">Population</th></tr>
+
+    <tr>
+  <td>Size: </td>
+  <td class="symbols">n</td>
   <td><div id="calculationSampleSize"></div></td>
-  <td>N</td>
-  <td><div id="calculationPopSize"></div></td>
-    </tr>
+  <td class="symbols">N</td>
+      <td><div id="calculationPopSize"></div></td></tr>
+ 
 <tr>
   <td> Sum: </td>
-  <td>Σ</td>
+  <td class="symbols">Σ</td>
   <td><div id="calculationSampleSum"></div></td>
-  <td>Σ</td>
+  <td class="symbols">Σ</td>
   <td><div id="calculationPopSum"></div></td>
   </tr>
 <tr>
   <td> Mean: </td>
-  <td>x̄</td>
+  <td class="symbols">x̄</td>
   <td><div id="calculationSampleMean"></div></td>
-  <td>μ</td>
+  <td class="symbols">μ</td>
   <td><div id="calculationPopMean"></div></td>
   </tr>
   <td> Variance: </td>
-  <td>s²</td>
+  <td class="symbols">s²</td>
   <td><div id="calculationSampleVar"></div></td>
-  <td>σ²</td>
+  <td class="symbols">σ²</td>
   <td><div id="calculationPopVar"></div></td>
   <tr>
   <td> Std. Deviation: </td>
-  <td>s</td>
+  <td class="symbols">s</td>
   <td><div id="calculationSampleStdDev"></div></td>
-  <td>σ</td>
+  <td class="symbols">σ</td>
   <td><div id="calculationPopStdDev"></div></td>
   </tr>
+ 
     </table>
-
-
-
-<script>
-
-function calculate() {
-  // This is the string that contains the numbers separated by a space.
-  var inputValue = document.getElementById('numberSeries').value;
-
-  var values = inputValue.split(' ')
-    .map((val) => parseInt(val))
-    .filter((val) => !isNaN(val));
-  
-
-    //part of the code don't change
-  var sum = values.reduce((currentVal, nextVal) => currentVal + nextVal, 0);
-  var average = sum / values.length;
-
-  
-  //test starts here
-xMinusXbar = [];
-  for (var i = 0, len = values.length; i < len; i++) 
-    xMinusXbar.push(((values[i] -average)*(values[i] -average)));
-
-    console.log(xMinusXbar);
-
-    var sumXminusXbar = xMinusXbar
-
-    .reduce( (sumXminusXbar,current) => sumXminusXbar + current, 0);
-    console.log(sumXminusXbar);
-    console.log(sumXminusXbar/xMinusXbar.length);
-    var variance = sumXminusXbar/(xMinusXbar.length - 1);
-    var variancep = sumXminusXbar/xMinusXbar.length;
-    var stdDeviation = Math.sqrt(variance);
-    var stdDeviationp = Math.sqrt(variancep);
-    console.log(stdDeviation);
-     
-
-  document.getElementById('calculationSampleSize').innerHTML = `${values.length}`;
-  document.getElementById('calculationPopSize').innerHTML = `${values.length}`;
-  document.getElementById('calculationSampleSum').innerHTML = `${sum}`;
-  document.getElementById('calculationPopSum').innerHTML = `${sum}`;
-  document.getElementById('calculationSampleMean').innerHTML = `${average}`;
-  document.getElementById('calculationPopMean').innerHTML = `${average}`;
-  document.getElementById('calculationSampleVar').innerHTML = `${variance}`;
-  document.getElementById('calculationPopVar').innerHTML = `${variancep}`;
-  document.getElementById('calculationSampleStdDev').innerHTML = `${stdDeviation}`;
-  document.getElementById('calculationPopStdDev').innerHTML = `${stdDeviationp}`;
+   
+      <style>
+     table {
+          table-layout:fixed;
+          width="90%"
 }
-</script>
+td.symbols {
+  text-align:center;
+  width:"90%";
+}
+   </style>
 
-<br><br>
-    <p>My personal javascript project, new functionalities to be added regularly. Currently working on graphing data.</p>
+
+    
+    
     </body>
-
+  
   </html>
