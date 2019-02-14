@@ -1,20 +1,72 @@
-<html lang="en">
+<html lang="en"> 
 <head>
-  <title>Stats Project</title>
+  <title>STATS</title>
   <meta charset="utf-8"/>
-
-
  </head>
-
+  
   <body>
 <input type="text" id="numberSeries"/>
     <button id="calculate" onclick="calculate();">Calculate</button>
     <p></p>
-    <div id="calculationSampleSize"></div>
-    <div id="calculationSum"></div>
-    <div id="calculationAverage"></div>
-    <div id="calculationVar"></div>
-    <div id="calculationStdDev"></div>
+
+    <style> 
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      td, td{
+        padding: 5px;
+      }
+      th {
+        text-aligne: left;
+      }
+      
+      }
+    </style>
+<table style="width: 100%">
+  <table align="center">
+<tr>
+  <th>Statistic</th>
+  <th></th>
+  <th>Sample </th>
+  <th></th>
+  <th>Population </th>
+  </tr>
+<tr>
+  <td> Size: </td>
+  <td>n</td>
+  <td><div id="calculationSampleSize"></div></td>
+  <td>N</td>
+  <td><div id="calculationPopSize"></div></td>
+    </tr>
+<tr>
+  <td> Sum: </td>
+  <td>Σ</td>
+  <td><div id="calculationSampleSum"></div></td>
+  <td>Σ</td>
+  <td><div id="calculationPopSum"></div></td>
+  </tr>
+<tr>
+  <td> Mean: </td>
+  <td>x̄</td>
+  <td><div id="calculationSampleMean"></div></td>
+  <td>μ</td>
+  <td><div id="calculationPopMean"></div></td>
+  </tr>
+  <td> Variance: </td>
+  <td>s²</td>
+  <td><div id="calculationSampleVar"></div></td>
+  <td>σ²</td>
+  <td><div id="calculationPopVar"></div></td>
+  <tr>
+  <td> Std. Deviation: </td>
+  <td>s</td>
+  <td><div id="calculationSampleStdDev"></div></td>
+  <td>σ</td>
+  <td><div id="calculationPopStdDev"></div></td>
+  </tr>
+    </table>
+
 
 
 <script>
@@ -26,39 +78,42 @@ function calculate() {
   var values = inputValue.split(' ')
     .map((val) => parseInt(val))
     .filter((val) => !isNaN(val));
-
+  
 
     //part of the code don't change
   var sum = values.reduce((currentVal, nextVal) => currentVal + nextVal, 0);
   var average = sum / values.length;
 
-
+  
   //test starts here
 xMinusXbar = [];
-  for (var i = 0, len = values.length; i < len; i++)
+  for (var i = 0, len = values.length; i < len; i++) 
     xMinusXbar.push(((values[i] -average)*(values[i] -average)));
-    //console.log (values);
-   // console.log(average);
+
     console.log(xMinusXbar);
-    //TESTING HERE
+
     var sumXminusXbar = xMinusXbar
-    //.map( v=> v[1] )
+
     .reduce( (sumXminusXbar,current) => sumXminusXbar + current, 0);
     console.log(sumXminusXbar);
     console.log(sumXminusXbar/xMinusXbar.length);
-    var variance = sumXminusXbar/xMinusXbar.length;
+    var variance = sumXminusXbar/(xMinusXbar.length - 1);
+    var variancep = sumXminusXbar/xMinusXbar.length;
     var stdDeviation = Math.sqrt(variance);
+    var stdDeviationp = Math.sqrt(variancep);
     console.log(stdDeviation);
+     
 
-
-  // EVERYTHING ABOVE IS GOOD EXCEPT: need to figure out a way to SUM the square of value-average
-
-  document.getElementById('calculationSampleSize').innerHTML = `Sample Size (n): ${values.length}`;
-  document.getElementById('calculationSum').innerHTML = `Sum (Σ): ${sum}`;
-  document.getElementById('calculationAverage').innerHTML = `Mean (μ): ${average}`;
-  document.getElementById('calculationVar').innerHTML = `Variance (σ²): ${variance}`;
-  document.getElementById('calculationStdDev').innerHTML = `Std Deviation (σ): ${stdDeviation}`;
-}
+  document.getElementById('calculationSampleSize').innerHTML = `${values.length}`;
+  document.getElementById('calculationPopSize').innerHTML = `${values.length}`;
+  document.getElementById('calculationSampleSum').innerHTML = `${sum}`;
+  document.getElementById('calculationPopSum').innerHTML = `${sum}`;
+  document.getElementById('calculationSampleMean').innerHTML = `${average}`;
+  document.getElementById('calculationPopMean').innerHTML = `${average}`;
+  document.getElementById('calculationSampleVar').innerHTML = `${variance}`;
+  document.getElementById('calculationPopVar').innerHTML = `${variancep}`;
+  document.getElementById('calculationSampleStdDev').innerHTML = `${stdDeviation}`;
+  document.getElementById('calculationPopStdDev').innerHTML = `${stdDeviationp}`;
 
 </script>
 
