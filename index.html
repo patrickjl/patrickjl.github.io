@@ -10,6 +10,7 @@
 <input type="text" id="numberSeries"/>
     <button id="calculate" onclick="calculate();">Calculate</button>
     <p></p>
+    <div id="calculationSampleSize"></div>
     <div id="calculationSum"></div>
     <div id="calculationAverage"></div>
     <div id="calculationVar"></div>
@@ -52,6 +53,7 @@ xMinusXbar = [];
 
   // EVERYTHING ABOVE IS GOOD EXCEPT: need to figure out a way to SUM the square of value-average
 
+  document.getElementById('calculationSampleSize').innerHTML = `Sample Size (n): ${values.length}`;
   document.getElementById('calculationSum').innerHTML = `Sum (Σ): ${sum}`;
   document.getElementById('calculationAverage').innerHTML = `Mean (μ): ${average}`;
   document.getElementById('calculationVar').innerHTML = `Variance (σ²): ${variance}`;
