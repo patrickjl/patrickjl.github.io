@@ -5,12 +5,24 @@
  </head>
   
   <body>
-    <!-- Background Image -->
+    <!-- Background Image 
  <body style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/ISS-40_Thunderheads_near_Borneo.jpg/1280px-ISS-40_Thunderheads_near_Borneo.jpg');" style="width:auto; background-repeat: no-repeat;">
-    <br>
+    <br> -->
    <style>
-   body {
-  background-repeat: no-repeat;
+body:before {
+  content: "";
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/ISS-40_Thunderheads_near_Borneo.jpg/1280px-ISS-40_Thunderheads_near_Borneo.jpg') no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
    </style>
    
