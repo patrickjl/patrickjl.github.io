@@ -27,19 +27,26 @@ body:before {
 }
    </style>
    
-    <p style="color:white;font-size:120%">Enter your values separated by a blank space.</p>
-   <p style="color:white;">Once all the values have been entered, press the Calculate button to get the data below.</p>
+   
+    <p style="color:white;font-size:120%;font-family:Lucida Console;text-align:center">Enter your values separated by a blank space.</p>
+   <p style="color:white;font-family:Lucida Console;text-align:center">Once all the values have been entered, press the Calculate button to get the data below.</p>
    
    <!-- Input Box -->
-<input type="text" id="numberSeries" size="40" style="height:60px; border:1px solid white;" align="center"/>
-
-    <br>
-   
-   <!--Calculate Button -->
+   <div id= inputbox style="text-align:center">
+<input type="text" id="numberSeries" size="40" style="height:60px; border:1px solid white;"/>
+     <br>
+        <!--Calculate Button -->
     <button id="calculate" style="opacity:0.7;background-color:blue;color:white;margin-top:10px;padding:6px;border-radius:6px;border: 1px solid white;" onclick="calculate();">&nbspCalculate&nbsp</button>
    
    <!--Reset Button -->
    <button id="reset" style="opacity:0.7;background-color:blue;color:white;margin-top:10px;padding:6px;border-radius:6px;border: 1px solid white;" onclick="reset();">&nbspReset&nbsp</button>
+
+   
+   </div>
+
+    <br>
+   
+
 <script type="text/javascript">
     document.getElementById('reset').onclick= function() {
         var field= document.getElementById('numberSeries');
