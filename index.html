@@ -138,19 +138,21 @@ td.symbols {
   width:"90%";
 }
    </style>
-
-<script>
-  function calculate() {
+    
+   <script>
+function calculate() {
   // This is the string that contains the numbers separated by a space.
   var inputValue = document.getElementById('numberSeries').value;
 
   var values = inputValue.split(' ')
+  // changed parseInt()) to parseFloat()) to try n fix decimal sum
     .map((val) => parseFloat(val))
     .filter((val) => !isNaN(val));
   
 
     //part of the code don't change
-  var sum = values.reduce((currentVal, nextVal) => currentVal + nextVal, 0);
+  var sum = values.reduce((currentVal, nextVal) => (currentVal*10000)/10000 + (nextVal*10000)/10000, 0);
+
   var average = sum / values.length;
 
   
@@ -175,17 +177,19 @@ xMinusXbar = [];
 
   document.getElementById('calculationSampleSize').innerHTML = `${values.length}`;
   document.getElementById('calculationPopSize').innerHTML = `${values.length}`;
-  document.getElementById('calculationSampleSum').innerHTML = `${sum}`;
-  document.getElementById('calculationPopSum').innerHTML = `${sum}`;
-  document.getElementById('calculationSampleMean').innerHTML = `${average}`;
-  document.getElementById('calculationPopMean').innerHTML = `${average}`;
-  document.getElementById('calculationSampleVar').innerHTML = `${variance}`;
-  document.getElementById('calculationPopVar').innerHTML = `${variancep}`;
-  document.getElementById('calculationSampleStdDev').innerHTML = `${stdDeviation}`;
-  document.getElementById('calculationPopStdDev').innerHTML = `${stdDeviationp}`;
-  }
-   </script>
-    
+  document.getElementById('calculationSampleSum').innerHTML = `${sum.toFixed(6)}`;
+  document.getElementById('calculationPopSum').innerHTML = `${sum.toFixed(6)}`;
+  document.getElementById('calculationSampleMean').innerHTML = `${average.toFixed(6)}`;
+  document.getElementById('calculationPopMean').innerHTML = `${average.toFixed(6)}`;
+  document.getElementById('calculationSampleVar').innerHTML = `${variance.toFixed(6)}`;
+  document.getElementById('calculationPopVar').innerHTML = `${variancep.toFixed(6)}`;
+  document.getElementById('calculationSampleStdDev').innerHTML = `${stdDeviation.toFixed(6)}`;
+  document.getElementById('calculationPopStdDev').innerHTML = `${stdDeviationp.toFixed(6)}`;
+  
+  // Reset Button
+    </script>
+  
+
     
     </body>
   
