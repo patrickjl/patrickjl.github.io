@@ -145,7 +145,7 @@ td.symbols {
   var inputValue = document.getElementById('numberSeries').value;
 
   var values = inputValue.split(' ')
-    .map((val) => parseInt(val))
+    .map((val) => parseFloat(val))
     .filter((val) => !isNaN(val));
   
 
