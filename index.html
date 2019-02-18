@@ -1,52 +1,55 @@
 <html lang="en"> 
 <head>
-  <title>Stats Project</title>
+  <title>STATS</title>
   <meta charset="utf-8"/>
  </head>
   
   <body>
-    <!-- Background Image 
- <body style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/ISS-40_Thunderheads_near_Borneo.jpg/1280px-ISS-40_Thunderheads_near_Borneo.jpg');" style="width:auto; background-repeat: no-repeat;">
-    <br> -->
-   <style>
-body:before {
-  content: "";
-  display: block;
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -10;
-  background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/ISS-40_Thunderheads_near_Borneo.jpg/1280px-ISS-40_Thunderheads_near_Borneo.jpg') no-repeat center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-color: black;
-}
-   </style>
+<!-- Background Image -->
+ <body style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/ISS-40_Thunderheads_near_Borneo.jpg/1280px-ISS-40_Thunderheads_near_Borneo.jpg');" style="width:auto;background-repeat:no-repeat;">
+    <br>
    
-   <br>
-    <p style="color:white;font-size:120%;font-family:Lucida Console;text-align:center;text-shadow: black 1px 1px 12px;">Enter your values separated by a blank space.</p>
-   <p style="color:white;font-family:Lucida Console;text-align:center;text-shadow: black 1px 1px 12px;">Once all the values have been entered, press the Calculate button to get the data below.</p>
-    
-   <!-- Input Box -->
+<!-- SIMPLE STATS BUTTON -->
+   <button onclick="hideShowSimple()" style="color:white;opacity:0.7;background-color:blue;margin-top:10px;padding:20px;border-radius:4px;border: 1px solid white; font-size:16px" onclick="reset();">Simple Stats</button>
+   
+   <!-- 1-Way ANOVA BUTTON -->
+   <button onclick="hideShow1WA()" style="color:white;opacity:0.7;background-color:blue;margin-top:10px;padding:20px;border-radius:4px;border: 1px solid white; font-size:16px" onclick="reset();">1-Way ANOVA</button>
+   
+   
+<!-- Instruction Test at Top -->
+    <p style="color:white;font-size:120%;font-family:Lucida Console;text-align:center;text-shadow: black 0px 0px 10px;">Enter your values separated by a blank space.</p>
+   <p style="color:white;font-family:Lucida Console;text-align:center;text-shadow: black 0px 0px 10px;">Once all the values have been entered, press the Calculate button to get the data below.</p>
+   
+<!-- Simple Stats button script -->
+   <script>
+function hideShowSimple() {
+  var HSS = document.getElementById("simpleStatsPage");
+  if (HSS.style.display === "none") {
+    HSS.style.display = "block";
+  } else {
+    HSS.style.display = "none";
+  } // this part toggles between Simple Stats and 1-Way ANOVA
+    var OWA = document.getElementById("1wayANOVApage");
+  OWA.style.display = "none";
+}
+</script>
+   
+<!-- &&&&&&&&& SIMPLE STATS STARTS HERE &&&&&&&&& -->
+ <div id= "simpleStatsPage">
+<!-- Input Box -->
    <div id= inputbox style="text-align:center">
-<input type="text" id="numberSeries" size="40" style="height:60px; border:1px solid white;"/>
+<input type="text" id="numberSeries" size="40" style="height:60px; border:1px solid white;input align:top"/>
      <br>
-        <!--Calculate Button -->
+<!--Calculate Button -->
     <button id="calculate" style="opacity:0.7;background-color:blue;color:white;margin-top:10px;padding:6px;border-radius:6px;border: 1px solid white;" onclick="calculate();">&nbspCalculate&nbsp</button>
    
    <!--Reset Button -->
    <button id="reset" style="opacity:0.7;background-color:blue;color:white;margin-top:10px;padding:6px;border-radius:6px;border: 1px solid white;" onclick="reset();">&nbspReset&nbsp</button>
 
+ </div>
+<br>
    
-   </div>
-
-    <br>
-   
-
+<!-- reset button javascript -->
 <script type="text/javascript">
     document.getElementById('reset').onclick= function() {
         var field= document.getElementById('numberSeries');
@@ -86,11 +89,11 @@ body:before {
     </style>
   <table align="center">
 <tr>
-  <th style="width:24%">Statistics</th>
+  <th style="width:28%">Statistics</th>
   <th style="width:8%">&nbsp&nbsp</th>
-  <th style="width:30%">Sample</th>
+  <th style="width:28%">Sample</th>
   <th style="width:8%">&nbsp&nbsp&nbsp&nbsp&nbsp</th>
-  <th style="width:30%">Population</th></tr>
+  <th style="width:28%">Population</th></tr>
 
     <tr>
   <td>Size: </td>
@@ -128,19 +131,49 @@ body:before {
  
     </table>
    
-      <style>
+   <style>
      table {
           table-layout:fixed;
-          width="90%"
+  width="90%"
 }
 td.symbols {
   text-align:center;
   width:"90%";
 }
    </style>
-    
+   </div>
+<!-- Simple Stats ends at /div above -->
+<!-- Simple Stats ends at /div above -->
+<!-- ** ** ** ** ** ** ** ** ** -->
+<!-- ANOVA starts below -->
+<!-- ANOVA starts below -->
+   
+   <!-- Simple Stats button script -->
    <script>
-function calculate() {
+function hideShow1WA() {
+  var OWA = document.getElementById("1wayANOVApage");
+  if (OWA.style.display === "none") {
+    OWA.style.display = "block";
+  } else {
+    OWA.style.display = "none";
+  } // this part toggles between Simple Stats and 1-Way ANOVA
+  var HSS = document.getElementById("simpleStatsPage");
+  HSS.style.display = "none";
+}
+</script>
+   
+   <div id= 1wayANOVApage>
+     
+     
+     
+     
+     
+     <!-- the /div for div 1wayANOVApage is below -->
+   </div>
+   
+   <script>
+     
+     function calculate() {
   // This is the string that contains the numbers separated by a space.
   var inputValue = document.getElementById('numberSeries').value;
 
@@ -186,10 +219,10 @@ xMinusXbar = [];
   document.getElementById('calculationSampleStdDev').innerHTML = `${stdDeviation.toFixed(6)}`;
   document.getElementById('calculationPopStdDev').innerHTML = `${stdDeviationp.toFixed(6)}`;
   
-  // Reset Button
-    </script>
-  
+     
+   </script>
 
+    
     
     </body>
   
